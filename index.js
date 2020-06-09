@@ -86,7 +86,7 @@ app.put('/api/users/:id', userValidationMiddlewares, (req, res) => {
   }
   const userId = req.params.id;
   const formData = req.body;
-  return connection.query('UPDATE user SET ? WHERE id = ?', [formData, idUser], (err, results) => {
+  return connection.query('UPDATE user SET ? WHERE id = ?', [formData, userId], (err, results) => {
     if (err) {
       if (err.code === 'ER_DUP_ENTRY') {
         return res.status(409).json({
